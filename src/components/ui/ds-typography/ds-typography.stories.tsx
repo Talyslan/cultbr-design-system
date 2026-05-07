@@ -1,15 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import {
-  DsTypography,
-  type TypographyColor,
-  type TypographyVariant,
-  type TypographyWeight,
-} from "./index";
+import { DsTypography } from "./index";
 import {
   TYPOGRAPHY_COLORS,
   TYPOGRAPHY_VARIANTS,
   TYPOGRAPHY_WEIGHTS,
+  type TypographyColor,
+  type TypographyVariant,
+  type TypographyWeight,
 } from "./props-and-variants";
 
 const meta: Meta<typeof DsTypography> = {
@@ -37,7 +35,8 @@ export default meta;
 type Story = StoryObj<typeof DsTypography>;
 export const Default: Story = {
   args: {
-    children: "o CultBR é uma plataforma que visa democratizar o acesso à cultura brasileira em todos os âmbitos culturais.",
+    children:
+      "O CultBR é uma plataforma que visa democratizar o acesso à cultura brasileira em todos os âmbitos culturais.",
     variant: "body-md",
   },
 };
