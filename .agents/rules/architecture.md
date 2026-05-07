@@ -55,6 +55,7 @@ Cada componente deve possuir:
 
 - index.tsx
 - styles.module.css
+- nome-do-componente.stories.tsx
 - types.ts (se e somente se quando necessário)
 
 ---

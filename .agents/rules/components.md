@@ -70,6 +70,7 @@ Exemplo:
 src/components/ui/ds-button/
   index.tsx
   styles.module.css
+  ds-button.stories.tsx
 
 ---
 
@@ -102,3 +103,13 @@ Adicionar dependências SOMENTE quando:
 - realmente necessário
 - agregarem valor claro
 - reduzirem complexidade crítica
+
+---
+
+# Documentação (Storybook)
+
+Todos os componentes DEVEM possuir:
+- arquivo de stories (`ds-nome.stories.tsx`)
+- cobertura de todas as variantes e estados principais
+- uso de controls para facilitar o teste de props
+- tag `autodocs` para geração automática de documentação
