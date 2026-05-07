@@ -26,13 +26,17 @@ O objetivo da Prova de Conceito (POC) do CultBR Design System é:
 - Demonstrar reutilização real em uma aplicação exemplo
 
 ### Problema
+
 Projetos frontend do ecossistema CultBR recriam componentes do zero, gerando inconsistência visual, retrabalho e falta de padronização.
 
 ### Público-alvo
+
 TEDS e projetos frontend institucionais da CultBR.
 
 ### Resultado Esperado
+
 Base sólida, simples e profissional para reutilização de componentes, com foco em arquitetura e escalabilidade.
+
 - Queremos uma fundação sólida, simples e profissional
 
 ## 🚀 Recursos
@@ -60,6 +64,7 @@ A criação de um Design System para o ecossistema CultBR surge da necessidade d
 ## 🛠️ Stack Tecnológica
 
 ### Desenvolvimento
+
 - **Linguagem:** TypeScript
 - **Framework:** React
 - **Build da biblioteca:** tsup
@@ -68,6 +73,7 @@ A criação de um Design System para o ecossistema CultBR surge da necessidade d
 ---
 
 ### Estilização
+
 - **Isolamento:** CSS Modules
 - **Tokens:** CSS Variables
 - **Headless:** Radix UI
@@ -75,6 +81,7 @@ A criação de um Design System para o ecossistema CultBR surge da necessidade d
 ---
 
 ### Documentação
+
 - **Storybook:** Documentação viva e showcase de componentes
 
 ## 📂 Arquitetura do Projeto
@@ -104,6 +111,7 @@ cultbr-design-system/
 ```
 
 ### Padrões do Projeto
+
 - Prefixo `Ds` em todos os componentes
 - Componentes organizados em pastas individuais
 - Imports centralizados via `src/index.ts`
@@ -113,12 +121,14 @@ cultbr-design-system/
 ## 💻 Executando o Projeto Localmente
 
 ### 1. Clone o repositório
+
 ```bash
 git clone https://github.com/Talyslan/cultbr-design-system.git
 cd cultbr-design-system
 ```
 
 ### 2. Instale as dependências
+
 ```bash
 pnpm install
 # ou
@@ -126,16 +136,19 @@ npm install
 ```
 
 ### 3. Rode o Storybook (documentação)
+
 ```bash
 pnpm storybook
 ```
 
 ### 4. Build da biblioteca
+
 ```bash
 pnpm build
 ```
 
 ### 5. Rode o exemplo local
+
 ```bash
 pnpm dev
 ```

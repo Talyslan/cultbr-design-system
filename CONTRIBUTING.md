@@ -90,7 +90,9 @@ Para manter issues e pull requests organizados, use os seguintes prefixos nos t�
   _Exemplo: `chore: atualizar estrutura do repositório`_
 
 ### Padrões de código
+
 Ao adicionar componentes ou tokens, siga:
+
 - Prefixo `Ds` em todos os componentes
 - Pastas individuais para cada componente
 - CSS Modules para isolamento de estilo
