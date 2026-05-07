@@ -1,0 +1,115 @@
+# Design System CultBR
+
+Bem-vindo ao Storybook do **Design System CultBR**. Este repositório concentra a biblioteca de componentes institucionais que padroniza as interfaces do ecossistema CultBR, garantindo consistencia visual, acessibilidade e governanca frontend em todos os produtos.
+
+---
+
+## Sobre o Design System
+
+O Design System CultBR foi estabelecido para centralizar e padronizar a linguagem visual e comportamental das aplicacoes frontend da organizacao. O projeto atua como uma camada de abstracao entre a identidade institucional e a implementacao tecnica, promovendo reutilizacao e reducao de retrabalho.
+
+### Princípios Fundamentais
+
+- **Consistência Visual**: Aplicação rigorosa de tokens de design centralizados em todos os componentes
+- **Acessibilidade**: Componentes desenvolvidos seguindo as diretrizes WCAG e padroes A11y desde a concepcao
+- **Reutilização**: Biblioteca modular de componentes prontos para integracao em qualquer projeto do ecossistema
+- **Simplicidade**: Arquitetura limpa e direta, evitando overengineering e abstrações desnecessárias
+- **Escalabilidade**: Estrutura preparada para o crescimento sustentavel e adocao gradual em novos projetos
+
+---
+
+## Componentes Disponíveis
+
+Navegue pelos componentes documentados neste Storybook:
+
+| Componente | Descrição | Status |
+|-----------|-----------|--------|
+| **DsButton** | Botões de acao com variantes visuais e estados de interacao | Disponível |
+| **DsCard** | Containers de conteudo com elevacao e estrutura flexivel | Disponível |
+| **DsTypography** | Sistema tipografico com hierarquia visual definida | Disponível |
+
+Novos componentes serao adicionados conforme a evolucao planejada do Design System.
+
+---
+
+## Como Começar
+
+### Instalação
+
+```bash
+npm install cultbr-design-system
+# ou
+pnpm add cultbr-design-system
+```
+
+### Exemplo de Uso
+
+```tsx
+import { DsButton, DsCard, DsTypography } from 'cultbr-design-system';
+
+function App() {
+  return (
+    <DsCard>
+      <DsTypography variant="h2">Bem-vindo</DsTypography>
+      <DsButton variant="primary">Começar</DsButton>
+    </DsCard>
+  );
+}
+```
+
+---
+
+## Design Tokens
+
+Todos os estilos utilizam **CSS Variables** centralizadas, evitando o uso de valores hardcoded nos componentes.
+
+### Cores
+- `var(--ds-color-primary)` — Cor principal da marca
+- `var(--ds-color-secondary)` — Cor secundária
+- `var(--ds-color-background)` — Cor de fundo
+- `var(--ds-color-text)` — Cor de texto padrão
+
+### Espaçamentos
+- `var(--ds-spacing-xs)` / `sm` / `md` / `lg` / `xl`
+
+### Tipografia
+- `var(--ds-font-size-body-sm)` / `md` / `lg`
+- `var(--ds-font-weight-regular)` / `medium` / `bold`
+
+### Bordas
+- `var(--ds-radius-sm)` / `md` / `lg`
+
+---
+
+## Stack Tecnológica
+
+- **React 18+** — Biblioteca base para construcao de interfaces
+- **TypeScript** — Tipagem estática para maior seguranca no desenvolvimento
+- **Vite** — Build tool moderna e de alta performance
+- **tsup** — Empacotamento otimizado da biblioteca
+- **CSS Modules** — Estilização com encapsulamento por componente
+- **CSS Variables** — Sistema dinamico de tokens
+- **Storybook** — Ambiente de desenvolvimento e documentacao viva
+
+---
+
+## Padrões de Desenvolvimento
+
+- Todos os componentes utilizam o prefixo `Ds` (Design System)
+- Componentes organizados em pastas individuais em `src/components/ui/`
+- Exportacoes centralizadas via `src/index.ts`
+- Acessibilidade (A11y) como prioridade em todas as implementacoes
+- APIs simples, previsiveis e consistentes entre componentes
+- Uso de CSS Modules e CSS Variables exclusivamente
+
+---
+
+## Navegação
+
+- **Components/Ui** — Visualizacao de todos os componentes e suas variantes
+- **Introduction** — Esta pagina de apresentacao
+- Consulte os stories de cada componente para exemplos detalhados e controles interativos
+
+---
+
+*Desenvolvido pela equipe de Frontend do CultBR | POC - Prova de Conceito*

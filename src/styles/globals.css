@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ds-font-sans);
+  background-color: hsl(var(--ds-color-background));
+  color: hsl(var(--ds-color-foreground));
+}
+
+main#main-content {
+  background-color: hsl(var(--ds-color-background));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: var(--ds-space-2);
+  height: var(--ds-size-2);
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--ds-color-gray-100));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--ds-color-gray-300));
+  border-radius: var(--ds-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--ds-color-gray-400));
+}
+
+/* Reduced Motion - WCAG 2.3.3 / eMAG */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -28,7 +28,7 @@
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true
   },
-  "include": ["src"],
+  "include": ["src", ".storybook"],
   "baseUrl": ".",
   "paths": {
     "@/*": ["src/*"]

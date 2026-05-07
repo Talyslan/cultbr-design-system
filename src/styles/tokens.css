@@ -1,0 +1,78 @@
+/**
+ * Tokens do Design System CultBR
+ * Arquivo principal - define tokens restantes
+ * Os outros tokens estão em: cores.tokens.css, text.tokens.css, spaces.tokens.css
+ */
+
+:root {
+  /* ========== TAMANHOS DE COMPONENTES ========== */
+  --ds-size-px: 1px;
+  --ds-size-2: 0.5rem;     /* 8px */
+  --ds-size-2_5: 0.625rem; /* 10px */
+  --ds-size-4: 1rem;       /* 16px */
+  --ds-size-4_5: 1.125rem; /* 18px */
+  --ds-size-5: 1.25rem;    /* 20px */
+  --ds-size-6: 1.5rem;     /* 24px */
+  --ds-size-7: 1.75rem;    /* 28px */
+  --ds-size-8: 2rem;       /* 32px */
+  --ds-size-9: 2.25rem;    /* 36px */
+  --ds-size-10: 2.5rem;    /* 40px */
+  --ds-size-11: 2.75rem;   /* 44px */
+  --ds-size-12: 3rem;      /* 48px */
+  --ds-size-14: 3.5rem;    /* 56px */
+
+  /* ========== SOMBRAS (Shadows) ========== */
+  --ds-shadow-xs: 0px 1px 2px 0px rgba(13, 13, 13, 0.04);
+  --ds-shadow-md: 0px 6px 20px 0px rgba(13, 13, 13, 0.08),
+    0px 1px 2px 0px rgba(13, 13, 13, 0.06);
+  --ds-shadow-lg: 0px 8px 24px 0px rgba(13, 13, 13, 0.12),
+    0px 2px 4px 0px rgba(13, 13, 13, 0.06);
+  --ds-shadow-focus: 0px 0px 0px 4px rgba(0, 85, 204, 0.32),
+    0px 1px 2px 0px var(--ds-color-blue-main);
+
+  /* ========== TRANSIÇÕES ========== */
+  --ds-duration-instant: 0.1s; /* hover, item de lista */
+  --ds-duration-fast: 0.15s;   /* cor e borda (botões) */
+  --ds-duration-base: 0.2s;    /* layout (input border) */
+  --ds-duration-slow: 0.3s;    /* animações de entrada */
+
+  /* ========== BORDAS ========== */
+  --ds-border-width-base: 1px;
+  --ds-border-width-thick: 2px;
+
+  /* ========== Z-INDEX ========== */
+  --z-sidebar: 20;
+  --z-header: 30;
+  --z-dropdown: 40;
+  --z-modal-overlay: 50;
+  --z-modal: 60;
+  --z-toast: 100;
+  --z-select-popover: 70;
+
+  /* ========== LAYOUT ========== */
+  --ds-layout-footer-reserved: max(5.5rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
+  --ds-layout-dropdown-height: 300px;
+  --ds-layout-dropdown-max-height: 400px;
+  --ds-layout-content-min-height: 120px;
+  --ds-layout-date-picker-width: 240px;
+
+  /* ========== TOAST ========== */
+  --ds-toast-dismiss-timeout: 4000ms;
+  --ds-toast-max-width: 31.5rem;
+  --ds-toast-min-height: 6rem;
+
+  /* ========== CHART COLORS ========== */
+  --ds-chart-brand: var(--ds-color-brand-primary);
+  --ds-chart-brand-hover: var(--ds-color-brand-primary-dark);
+  --ds-chart-success: var(--ds-color-success);
+  --ds-chart-warning: var(--ds-color-warning);
+  --ds-chart-error: var(--ds-color-error);
+  --ds-chart-grid: var(--ds-color-gray-200);
+  --ds-chart-label: var(--ds-color-gray-400);
+  --ds-chart-tooltip-bg: var(--ds-color-gray-700);
+  --ds-chart-1: 12 76% 61%;
+  --ds-chart-2: 173 58% 39%;
+  --ds-chart-3: 197 37% 24%;
+  --ds-chart-4: 43 74% 66%;
+  --ds-chart-5: 27 87% 67%;
+}
