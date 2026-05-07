@@ -78,7 +78,7 @@ export const RadiusLarge: Story = {
   },
 };
 
-export const Error: Story = {
+export const ErrorField: Story = {
   args: {
     error: true,
     placeholder: "Campo com erro",
