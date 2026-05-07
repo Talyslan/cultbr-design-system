@@ -61,22 +61,23 @@
 }
 
 /* Display */
+.displayD1,
+.displayD2,
+.displayD3 {
+  font-weight: var(--ds-font-weight-bold);
+  line-height: var(--ds-line-height-display);
+}
+
 .displayD1 {
   font-size: var(--ds-font-size-display-d1);
-  font-weight: var(--ds-font-weight-bold);
-  line-height: var(--ds-line-height-tight);
 }
 
 .displayD2 {
   font-size: var(--ds-font-size-display-d2);
-  font-weight: var(--ds-font-weight-bold);
-  line-height: var(--ds-line-height-tight);
 }
 
 .displayD3 {
   font-size: var(--ds-font-size-display-d3);
-  font-weight: var(--ds-font-weight-bold);
-  line-height: var(--ds-line-height-tight);
 }
 
 /* Small */

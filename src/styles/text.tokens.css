@@ -79,4 +79,5 @@
   --ds-line-height-snug: 1.25rem;   /* 20px */
   --ds-line-height-normal: 1.5rem;  /* 24px */
   --ds-line-height-150: 150%;
+  --ds-line-height-display: 1.1;     /* Unitless ~110% for displays */
 }

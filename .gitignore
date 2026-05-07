@@ -30,3 +30,6 @@ storybook-static
 
 # Legacy 
 legacy/
+
+# MCP Serena
+.serena/

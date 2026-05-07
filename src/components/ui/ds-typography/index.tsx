@@ -35,18 +35,18 @@ export interface DsTypographyProps {
   variant?: DsTypographyVariant;
   color?: DsTypographyColor;
   weight?: DsTypographyWeight;
+  as?: "span" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   children?: ReactNode;
-  className?: string;
 }
 
 function DsTypography({
   variant = "body-md",
   color = "primary",
   weight,
+  as,
   children,
-  className,
 }: Readonly<DsTypographyProps>) {
-  const variantClass = ((): string | undefined => {
+  const variantClass = (() => {
     switch (variant) {
       case "h1":
         return styles["h1"];
@@ -83,7 +83,7 @@ function DsTypography({
     }
   })();
 
-  const weightClass = ((): string | undefined => {
+  const weightClass = (() => {
     if (!weight) return "";
     switch (weight) {
       case "regular":
@@ -99,7 +99,7 @@ function DsTypography({
     }
   })();
 
-  const colorClass = ((): string | undefined => {
+  const colorClass = (() => {
     switch (color) {
       case "primary":
         return styles["colorPrimary"];
@@ -122,7 +122,24 @@ function DsTypography({
     }
   })();
 
-  const combinedClass = `${styles["base"]} ${variantClass} ${weightClass} ${colorClass} ${className ?? ""}`;
+  const combinedClass = [styles["base"], variantClass, weightClass, colorClass]
+    .filter(Boolean)
+    .join(" ");
+
+  const dataAttributes = {
+    "data-variant": variant,
+    "data-color": color,
+    ...(weight ? { "data-weight": weight } : {}),
+  } as const;
+
+  if (as) {
+    const Tag = as;
+    return (
+      <Tag className={combinedClass} {...dataAttributes}>
+        {children}
+      </Tag>
+    );
+  }
 
   switch (variant) {
     case "h1":
@@ -130,78 +147,43 @@ function DsTypography({
     case "display-d2":
     case "display-d3":
       return (
-        <h1
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h1 className={combinedClass} {...dataAttributes}>
           {children}
         </h1>
       );
     case "h2":
       return (
-        <h2
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h2 className={combinedClass} {...dataAttributes}>
           {children}
         </h2>
       );
     case "h3":
       return (
-        <h3
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h3 className={combinedClass} {...dataAttributes}>
           {children}
         </h3>
       );
     case "h4":
       return (
-        <h4
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h4 className={combinedClass} {...dataAttributes}>
           {children}
         </h4>
       );
     case "h5":
       return (
-        <h5
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h5 className={combinedClass} {...dataAttributes}>
           {children}
         </h5>
       );
     case "h6":
       return (
-        <h6
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <h6 className={combinedClass} {...dataAttributes}>
           {children}
         </h6>
       );
     default:
       return (
-        <p
-          className={combinedClass}
-          data-variant={variant}
-          data-color={color}
-          data-weight={weight}
-        >
+        <p className={combinedClass} {...dataAttributes}>
           {children}
         </p>
       );
