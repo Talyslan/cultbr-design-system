@@ -1,0 +1,67 @@
+.base {
+  width: 100%;
+  border: var(--ds-size-px) solid hsl(var(--ds-color-border-hsl));
+  background: transparent;
+  color: var(--ds-color-text-primary);
+  transition: border-color var(--ds-duration-base) ease;
+  font-family: var(--ds-font-sans);
+  outline: none;
+}
+
+.base:focus-visible {
+  box-shadow: var(--ds-shadow-focus);
+}
+
+.base::placeholder {
+  color: hsl(var(--ds-color-gray-400));
+}
+
+.base:disabled {
+  background-color: hsl(var(--ds-color-neutral-100));
+  color: var(--ds-color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ==================== SIZES ==================== */
+.sizeSm {
+  height: var(--ds-size-9);
+  padding: 0.5rem 0.75rem;
+  font-size: var(--ds-font-size-xs);
+}
+
+.sizeMd {
+  height: var(--ds-size-12);
+  padding: 0.75rem 1rem;
+  font-size: var(--ds-font-size-sm);
+}
+
+.sizeLg {
+  height: var(--ds-size-14);
+  padding: 1rem;
+  font-size: var(--ds-font-size-md);
+}
+
+/* ==================== RADII ==================== */
+.radiusSm {
+  border-radius: var(--ds-radius-sm);
+}
+
+.radiusMd {
+  border-radius: var(--ds-radius-base);
+}
+
+.radiusLg {
+  border-radius: var(--ds-radius-lg);
+}
+
+/* ==================== STATES ==================== */
+.error {
+  border-color: hsl(var(--ds-color-error));
+  background-color: hsl(var(--ds-color-error-light));
+  color: hsl(var(--ds-color-error-dark));
+}
+
+.error::placeholder {
+  color: hsl(var(--ds-color-error-dark) / 0.5);
+}

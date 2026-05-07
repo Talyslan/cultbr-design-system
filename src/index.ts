@@ -10,5 +10,6 @@ import "./styles/globals.css";
 // Components
 export * from "./components/ui/ds-badge";
 export * from "./components/ui/ds-button";
+export * from "./components/ui/ds-input";
 export * from "./components/ui/ds-loading";
 export * from "./components/ui/ds-typography";

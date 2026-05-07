@@ -239,7 +239,7 @@
 }
 
 .roundLg {
-  border-radius: var(--ds-radius-2xl);
+  border-radius: var(--ds-radius-lg);
 }
 
 .roundFull {
