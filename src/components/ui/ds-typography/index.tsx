@@ -1,193 +1,50 @@
-import type { ReactNode } from "react";
+import { clsx } from "clsx";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
 
+import {
+  TYPOGRAPHY_COLORS,
+  TYPOGRAPHY_VARIANTS,
+  TYPOGRAPHY_WEIGHTS,
+  type TypographyColor,
+  type TypographyVariant,
+  type TypographyWeight,
+} from "./props-and-variants";
 import styles from "./styles.module.css";
 
-export type DsTypographyVariant =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "body-lg"
-  | "body-md"
-  | "body-sm"
-  | "caption"
-  | "overline"
-  | "micro"
-  | "display-d1"
-  | "display-d2"
-  | "display-d3";
-
-export type DsTypographyColor =
-  | "primary"
-  | "secondary"
-  | "muted"
-  | "brand"
-  | "danger"
-  | "success"
-  | "warning"
-  | "inverse";
-
-export type DsTypographyWeight = "regular" | "medium" | "semibold" | "bold";
-
-export interface DsTypographyProps {
-  variant?: DsTypographyVariant;
-  color?: DsTypographyColor;
-  weight?: DsTypographyWeight;
-  as?: "span" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export interface DsTypographyProps extends HTMLAttributes<HTMLElement> {
+  variant?: TypographyVariant;
+  color?: TypographyColor;
+  weight?: TypographyWeight;
+  as?: ElementType;
   children?: ReactNode;
 }
 
-function DsTypography({
+export function DsTypography({
   variant = "body-md",
   color = "primary",
   weight,
   as,
   children,
+  ...props
 }: Readonly<DsTypographyProps>) {
-  const variantClass = (() => {
-    switch (variant) {
-      case "h1":
-        return styles["h1"];
-      case "h2":
-        return styles["h2"];
-      case "h3":
-        return styles["h3"];
-      case "h4":
-        return styles["h4"];
-      case "h5":
-        return styles["h5"];
-      case "h6":
-        return styles["h6"];
-      case "body-lg":
-        return styles["bodyLg"];
-      case "body-md":
-        return styles["bodyMd"];
-      case "body-sm":
-        return styles["bodySm"];
-      case "caption":
-        return styles["caption"];
-      case "overline":
-        return styles["overline"];
-      case "micro":
-        return styles["micro"];
-      case "display-d1":
-        return styles["displayD1"];
-      case "display-d2":
-        return styles["displayD2"];
-      case "display-d3":
-        return styles["displayD3"];
-      default:
-        return styles["bodyMd"];
-    }
-  })();
+  const variantConfig = TYPOGRAPHY_VARIANTS[variant];
 
-  const weightClass = (() => {
-    if (!weight) return "";
-    switch (weight) {
-      case "regular":
-        return styles["weightRegular"];
-      case "medium":
-        return styles["weightMedium"];
-      case "semibold":
-        return styles["weightSemibold"];
-      case "bold":
-        return styles["weightBold"];
-      default:
-        return "";
-    }
-  })();
+  const Tag = as ?? variantConfig.tag;
 
-  const colorClass = (() => {
-    switch (color) {
-      case "primary":
-        return styles["colorPrimary"];
-      case "secondary":
-        return styles["colorSecondary"];
-      case "muted":
-        return styles["colorMuted"];
-      case "brand":
-        return styles["colorBrand"];
-      case "danger":
-        return styles["colorDanger"];
-      case "success":
-        return styles["colorSuccess"];
-      case "warning":
-        return styles["colorWarning"];
-      case "inverse":
-        return styles["colorInverse"];
-      default:
-        return "";
-    }
-  })();
-
-  const combinedClass = [styles["base"], variantClass, weightClass, colorClass]
-    .filter(Boolean)
-    .join(" ");
-
-  const dataAttributes = {
-    "data-variant": variant,
-    "data-color": color,
-    ...(weight ? { "data-weight": weight } : {}),
-  } as const;
-
-  if (as) {
-    const Tag = as;
-    return (
-      <Tag className={combinedClass} {...dataAttributes}>
-        {children}
-      </Tag>
-    );
-  }
-
-  switch (variant) {
-    case "h1":
-    case "display-d1":
-    case "display-d2":
-    case "display-d3":
-      return (
-        <h1 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h1>
-      );
-    case "h2":
-      return (
-        <h2 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h2>
-      );
-    case "h3":
-      return (
-        <h3 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h3>
-      );
-    case "h4":
-      return (
-        <h4 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h4>
-      );
-    case "h5":
-      return (
-        <h5 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h5>
-      );
-    case "h6":
-      return (
-        <h6 className={combinedClass} {...dataAttributes}>
-          {children}
-        </h6>
-      );
-    default:
-      return (
-        <p className={combinedClass} {...dataAttributes}>
-          {children}
-        </p>
-      );
-  }
+  return (
+    <Tag
+      className={clsx(
+        styles["base"],
+        styles[variantConfig.className],
+        styles[TYPOGRAPHY_COLORS[color]],
+        weight && styles[TYPOGRAPHY_WEIGHTS[weight]],
+      )}
+      data-variant={variant}
+      data-color={color}
+      data-weight={weight}
+      {...props}
+    >
+      {children}
+    </Tag>
+  );
 }
-
-export { DsTypography };

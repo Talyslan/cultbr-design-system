@@ -1,58 +1,43 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DsTypography } from "./index";
+import {
+  DsTypography,
+  type TypographyColor,
+  type TypographyVariant,
+  type TypographyWeight,
+} from "./index";
+import {
+  TYPOGRAPHY_COLORS,
+  TYPOGRAPHY_VARIANTS,
+  TYPOGRAPHY_WEIGHTS,
+} from "./props-and-variants";
 
 const meta: Meta<typeof DsTypography> = {
-  title: "UI/DsTypography",
+  title: "Components/DsTypography",
   component: DsTypography,
   tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
-      options: [
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "body-lg",
-        "body-md",
-        "body-sm",
-        "caption",
-        "overline",
-        "micro",
-        "display-d1",
-        "display-d2",
-        "display-d3",
-      ],
+      options: Object.keys(TYPOGRAPHY_VARIANTS) as Array<TypographyVariant>,
     },
     color: {
       control: "select",
-      options: [
-        "primary",
-        "secondary",
-        "muted",
-        "brand",
-        "danger",
-        "success",
-        "warning",
-        "inverse",
-      ],
+      options: Object.keys(TYPOGRAPHY_COLORS) as Array<TypographyColor>,
     },
     weight: {
       control: "select",
-      options: ["regular", "medium", "semibold", "bold"],
+      options: Object.keys(TYPOGRAPHY_WEIGHTS) as Array<TypographyWeight>,
     },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof DsTypography>;
 
+type Story = StoryObj<typeof DsTypography>;
 export const Default: Story = {
   args: {
-    children: "A raposa marrom rápida salta sobre o cão preguiçoso.",
+    children: "o CultBR é uma plataforma que visa democratizar o acesso à cultura brasileira em todos os âmbitos culturais.",
     variant: "body-md",
   },
 };
