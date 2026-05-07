@@ -30,15 +30,25 @@
   --ds-shadow-focus: 0px 0px 0px 4px rgba(0, 85, 204, 0.32),
     0px 1px 2px 0px var(--ds-color-blue-main);
 
-  /* ========== TRANSIÇÕES ========== */
+  /* ========== TRANSIÇÕES E ANIMAÇÕES ========== */
   --ds-duration-instant: 0.1s; /* hover, item de lista */
   --ds-duration-fast: 0.15s;   /* cor e borda (botões) */
   --ds-duration-base: 0.2s;    /* layout (input border) */
   --ds-duration-slow: 0.3s;    /* animações de entrada */
 
-  /* ========== BORDAS ========== */
+  --ds-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-duration-loading: 1s;
+
+  /* ========== BORDAS E ARREDONDAMENTO ========== */
   --ds-border-width-base: 1px;
   --ds-border-width-thick: 2px;
+
+  --ds-radius-sm: 0.25rem;   /* 4px */
+  --ds-radius-md: 0.375rem;  /* 6px */
+  --ds-radius-base: 0.5rem;  /* 8px */
+  --ds-radius-xl: 0.75rem;   /* 12px */
+  --ds-radius-2xl: 1rem;     /* 16px */
+  --ds-radius-full: 9999px;  /* Full circle */
 
   /* ========== Z-INDEX ========== */
   --z-sidebar: 20;
