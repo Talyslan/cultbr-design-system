@@ -65,12 +65,13 @@ Evitar:
 
 # Estrutura recomendada
 
-Exemplo:
+Cada componente em `src/components/ui/` deve seguir esta estrutura baseada no `ds-typography`:
 
-src/components/ui/ds-button/
-  index.tsx
-  styles.module.css
-  ds-button.stories.tsx
+src/components/ui/component-name/
+├── index.tsx                 # Componente com forwardRef e tipagem polimórfica
+├── props-and-variants.ts     # Constantes, tipos derivados e configurações
+├── styles.module.css         # Estilos CSS Modules
+└── component-name.stories.tsx  # Stories do Storybook
 
 ---
 
