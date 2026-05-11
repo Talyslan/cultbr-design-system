@@ -1,20 +1,22 @@
-export const BADGE_VARIANTS = {
-  default: "variantDefault",
-  secondary: "variantSecondary",
-  destructive: "variantDestructive",
-  outline: "variantOutline",
-  success: "variantSuccess",
-  danger: "variantDanger",
-  warning: "variantWarning",
-  brand: "variantBrand",
-  disabled: "variantDisabled",
+export const BADGE_TONES = {
+  neutral: "tone-neutral",
+  brand: "tone-brand",
+  success: "tone-success",
+  danger: "tone-danger",
+  warning: "tone-warning",
+} as const;
+
+export const BADGE_APPEARANCES = {
+  solid: "appearance-solid",
+  subtle: "appearance-subtle",
+  outline: "appearance-outline",
 } as const;
 
 export const BADGE_SIZES = {
-  default: "sizeDefault",
-  sm: "sizeSm",
-  dot: "sizeDot",
+  default: "size-default",
+  sm: "size-sm",
 } as const;
 
-export type BadgeVariant = keyof typeof BADGE_VARIANTS;
+export type BadgeTone = keyof typeof BADGE_TONES;
+export type BadgeAppearance = keyof typeof BADGE_APPEARANCES;
 export type BadgeSize = keyof typeof BADGE_SIZES;

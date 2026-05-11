@@ -1,87 +1,150 @@
 .base {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--ds-space-1);
   border-radius: var(--ds-radius-full);
   border: var(--ds-size-px) solid transparent;
   white-space: nowrap;
   font-family: var(--ds-font-sans);
+  font-weight: var(--ds-font-weight-medium);
+  line-height: 1;
+
+  /* Default fallback values — overridden by tone + appearance combos below. */
+  --badge-tone-base: hsl(var(--ds-color-neutral-700));
+  --badge-tone-base-on: hsl(var(--ds-color-gray-100));
+  --badge-tone-bg-subtle: hsl(var(--ds-color-neutral-100));
+  --badge-tone-fg-subtle: var(--ds-color-text-secondary);
 }
 
 /* ==================== SIZES ==================== */
-.sizeDefault {
+.size-default {
   padding: var(--ds-space-1) var(--ds-space-4);
   font-size: var(--ds-font-size-sm);
 }
 
-.sizeSm {
+.size-sm {
   padding: var(--ds-space-1) var(--ds-space-2);
   font-size: var(--ds-font-size-xs);
-  font-weight: var(--ds-font-weight-medium);
 }
 
-.sizeDot {
-  width: 0.5rem;
-  height: 0.5rem;
-  padding: 0;
+/* ==================== TONES (apenas definem variáveis) ==================== */
+.tone-neutral {
+  --badge-tone-base: hsl(var(--ds-color-neutral-700));
+  --badge-tone-base-on: hsl(var(--ds-color-gray-100));
+  --badge-tone-bg-subtle: hsl(var(--ds-color-neutral-100));
+  --badge-tone-fg-subtle: var(--ds-color-text-secondary);
 }
 
-/* ==================== VARIANTS ==================== */
-.variantDefault {
-  background-color: hsl(var(--ds-color-brand-primary));
-  color: var(--ds-color-brand-on);
+.tone-brand {
+  --badge-tone-base: var(--ds-color-text-brand);
+  --badge-tone-base-on: var(--ds-color-brand-on);
+  --badge-tone-bg-subtle: hsl(var(--ds-color-brand-primary-light));
+  --badge-tone-fg-subtle: var(--ds-color-text-brand);
 }
 
-.variantSecondary {
-  background-color: hsl(var(--ds-color-neutral-100));
-  color: var(--ds-color-text-secondary);
+.tone-success {
+  --badge-tone-base: hsl(var(--ds-color-success-dark));
+  --badge-tone-base-on: hsl(var(--ds-color-gray-100));
+  --badge-tone-bg-subtle: hsl(var(--ds-color-success-light));
+  --badge-tone-fg-subtle: hsl(var(--ds-color-success-dark));
 }
 
-.variantDestructive {
-  background-color: hsl(var(--ds-color-error));
-  color: var(--ds-color-surface-bright);
+.tone-danger {
+  --badge-tone-base: hsl(var(--ds-color-error-dark));
+  --badge-tone-base-on: hsl(var(--ds-color-gray-100));
+  --badge-tone-bg-subtle: hsl(var(--ds-color-error-light));
+  --badge-tone-fg-subtle: hsl(var(--ds-color-error-dark));
 }
 
-.variantOutline {
-  border-color: hsl(var(--ds-color-border-hsl));
-  color: var(--ds-color-text-secondary);
+.tone-warning {
+  --badge-tone-base: hsl(var(--ds-color-warning-dark));
+  --badge-tone-base-on: hsl(var(--ds-color-gray-100));
+  --badge-tone-bg-subtle: hsl(var(--ds-color-warning-light));
+  --badge-tone-fg-subtle: hsl(var(--ds-color-warning-dark));
 }
 
-.variantSuccess {
-  background-color: hsl(var(--ds-color-success-light));
-  color: hsl(var(--ds-color-success-dark));
+/* ==================== APPEARANCES (consomem as variáveis) ================== */
+.appearance-solid {
+  background-color: var(--badge-tone-base);
+  color: var(--badge-tone-base-on);
+  border-color: transparent;
+
+  /* Pulse herda a cor base do tom (não a cor do texto, que é clara) */
+  --badge-pulse-color: var(--badge-tone-base);
 }
 
-.variantDanger {
-  background-color: hsl(var(--ds-color-error-light));
-  color: hsl(var(--ds-color-error-dark));
+.appearance-subtle {
+  background-color: var(--badge-tone-bg-subtle);
+  color: var(--badge-tone-fg-subtle);
+  border-color: transparent;
+  --badge-pulse-color: var(--badge-tone-fg-subtle);
 }
 
-.variantWarning {
-  background-color: hsl(var(--ds-color-warning-light));
-  color: hsl(var(--ds-color-warning-dark));
+.appearance-outline {
+  background-color: transparent;
+  border-color: var(--badge-tone-base);
+  color: var(--badge-tone-base);
+  --badge-pulse-color: var(--badge-tone-base);
 }
 
-.variantBrand {
-  background-color: hsl(var(--ds-color-brand-primary-light));
-  color: var(--ds-color-text-brand);
-}
-
-.variantDisabled {
+/* ==================== STATE ==================== */
+.disabled {
   background-color: hsl(var(--ds-color-neutral-200));
   color: var(--ds-color-text-muted);
-  cursor: not-allowed;
+  border-color: transparent;
+  opacity: 0.7;
 }
 
-/* Screen Reader Only */
-.srOnly {
+/* ==================== PULSE (live indicator) ============================== */
+.pulse {
+  /* Halo permanente sutil, ajuda a "ancorar" o efeito mesmo em solid */
+  box-shadow: 0 0 0 1px
+    color-mix(in srgb, var(--badge-pulse-color, currentcolor) 35%, transparent);
+}
+
+.pulse::before,
+.pulse::after {
+  content: "";
   position: absolute;
-  width: var(--ds-size-px);
-  height: var(--ds-size-px);
-  padding: 0;
-  margin: calc(var(--ds-size-px) * -1);
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--badge-pulse-color, currentcolor);
+  pointer-events: none;
+  opacity: 0;
+  animation: ds-badge-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.pulse::after {
+  animation-delay: 0.9s;
+}
+
+@keyframes ds-badge-pulse {
+  0% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+
+  80% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    box-shadow: none;
+  }
+
+  .pulse::before,
+  .pulse::after {
+    animation: none;
+    opacity: 0;
+  }
 }

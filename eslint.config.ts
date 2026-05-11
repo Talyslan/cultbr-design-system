@@ -10,7 +10,14 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  globalIgnores(["dist", "node_modules", "coverage", ".next", "legacy"]),
+  globalIgnores([
+    "dist",
+    "node_modules",
+    "coverage",
+    ".next",
+    "legacy",
+    "storybook-static",
+  ]),
   js.configs.recommended,
   ...tseslint.configs.recommended,
   reactHooks.configs.flat.recommended,

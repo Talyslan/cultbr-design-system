@@ -2,37 +2,67 @@ import { clsx } from "clsx";
 import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 
 import {
+  BADGE_APPEARANCES,
   BADGE_SIZES,
-  BADGE_VARIANTS,
+  BADGE_TONES,
+  type BadgeAppearance,
   type BadgeSize,
-  type BadgeVariant,
+  type BadgeTone,
 } from "./props-and-variants";
 import styles from "./styles.module.css";
 
-export interface DsBadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: BadgeVariant;
+export interface DsBadgeProps extends Omit<
+  HTMLAttributes<HTMLSpanElement>,
+  "children"
+> {
+  /** Tom semântico do badge. */
+  tone?: BadgeTone;
+  /** Aparência visual aplicada sobre o tom. */
+  appearance?: BadgeAppearance;
+  /** Tamanho do badge. */
   size?: BadgeSize;
-  children?: ReactNode;
+  /** Estado desabilitado. Sobrescreve a aparência atual. */
+  disabled?: boolean;
+  /**
+   * Aplica uma animação suave de "pulse" para indicadores ao vivo.
+   * Respeita `prefers-reduced-motion: reduce`, desativando a animação.
+   */
+  pulse?: boolean;
+  /** Conteúdo do badge. Obrigatório. */
+  children: ReactNode;
 }
 
 export const DsBadge = forwardRef<HTMLSpanElement, DsBadgeProps>(
-  ({ variant = "default", size = "default", children, ...props }, ref) => {
-    const variantClass = styles[BADGE_VARIANTS[variant]];
-    const sizeClass = styles[BADGE_SIZES[size]];
-
+  function DsBadge(
+    {
+      tone = "neutral",
+      appearance = "subtle",
+      size = "default",
+      disabled = false,
+      pulse = false,
+      className,
+      children,
+      ...rest
+    },
+    ref,
+  ) {
     return (
       <span
         ref={ref}
-        className={clsx(styles["base"], variantClass, sizeClass)}
-        {...props}
-      >
-        {size === "dot" && !children && (
-          <span className={styles["srOnly"]}>{variant}</span>
+        className={clsx(
+          styles["base"],
+          styles[BADGE_TONES[tone]],
+          styles[BADGE_APPEARANCES[appearance]],
+          styles[BADGE_SIZES[size]],
+          disabled && styles["disabled"],
+          pulse && styles["pulse"],
+          className,
         )}
+        aria-disabled={disabled || undefined}
+        {...rest}
+      >
         {children}
       </span>
     );
   },
 );
-
-DsBadge.displayName = "DsBadge";
