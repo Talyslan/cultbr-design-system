@@ -55,10 +55,10 @@
   --ds-color-text-muted: hsl(var(--ds-color-gray-400));
   --ds-color-text-disabled: hsl(var(--ds-color-gray-300));
   --ds-color-text-inverse: hsl(var(--ds-color-gray-100));
-  --ds-color-text-brand: #4b6ef5;
-  --ds-color-text-error: #f55a4b;
-  --ds-color-text-success: #22c55e;
-  --ds-color-text-warning: #ca8a04;
+  --ds-color-text-brand: #1d4ed8;
+  --ds-color-text-error: #c92a1a;
+  --ds-color-text-success: #15803d;
+  --ds-color-text-warning: #a16207;
 
   /* Text Colors (HSL) */
   --ds-color-text-primary-hsl: var(--ds-color-neutral-900);

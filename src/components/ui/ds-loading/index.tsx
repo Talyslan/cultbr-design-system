@@ -38,7 +38,7 @@ export function DsLoading({
         <DsTypography
           as="span"
           variant="micro"
-          color="muted"
+          tone="muted"
           className={styles["srOnly"]}
         >
           Carregando...
@@ -59,7 +59,7 @@ export function DsLoading({
       <DsTypography
         as="span"
         variant="micro"
-        color="muted"
+        tone="muted"
         className={styles["srOnly"]}
       >
         Carregando...
