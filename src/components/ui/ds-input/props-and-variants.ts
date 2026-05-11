@@ -1,14 +1,13 @@
 export const INPUT_SIZES = {
-  sm: "sizeSm",
-  md: "sizeMd",
-  lg: "sizeLg",
+  sm: "size-sm",
+  md: "size-md",
+  lg: "size-lg",
 } as const;
 
-export const INPUT_RADII = {
-  sm: "radiusSm",
-  md: "radiusMd",
-  lg: "radiusLg",
+export const VALIDATION_STATES = {
+  valid: "validation-valid",
+  invalid: "validation-invalid",
 } as const;
 
 export type InputSize = keyof typeof INPUT_SIZES;
-export type InputRadius = keyof typeof INPUT_RADII;
+export type ValidationState = keyof typeof VALIDATION_STATES;

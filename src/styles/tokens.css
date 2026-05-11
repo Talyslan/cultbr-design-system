@@ -51,6 +51,10 @@
   --ds-radius-2xl: 1rem;     /* 16px */
   --ds-radius-full: 9999px;  /* Full circle */
 
+  /* Component-level aliases */
+  --ds-radius-input: var(--ds-radius-base);   /* 8px */
+  --ds-radius-control: var(--ds-radius-base); /* select, textarea, etc */
+
   /* ========== Z-INDEX ========== */
   --z-sidebar: 20;
   --z-header: 30;

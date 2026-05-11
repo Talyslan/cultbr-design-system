@@ -59,6 +59,7 @@
   --ds-color-text-error: #c92a1a;
   --ds-color-text-success: #15803d;
   --ds-color-text-warning: #a16207;
+  --ds-color-text-placeholder: #6b7280;
 
   /* Text Colors (HSL) */
   --ds-color-text-primary-hsl: var(--ds-color-neutral-900);
