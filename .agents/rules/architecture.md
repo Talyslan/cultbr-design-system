@@ -33,6 +33,7 @@ NÃO é objetivo atual:
 - tsup
 - CSS Modules
 - CSS Variables
+- `@phosphor-icons/react` (biblioteca oficial e única de ícones — ver `icons.md`)
 
 ---
 
@@ -65,7 +66,7 @@ Cada componente deve possuir:
 Todos os tokens globais devem ficar em:
 
 src/styles/spaces.tokens.css
-src/styles/cores.tokens.css
+src/styles/colors.tokens.css
 src/styles/text.tokens.css
 e assim em diante ...
 

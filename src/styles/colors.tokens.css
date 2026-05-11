@@ -1,5 +1,5 @@
 /**
- * Cores - Design System CultBR
+ * Colors - Design System CultBR
  */
 
 :root {
@@ -129,9 +129,12 @@
   --ds-color-button-bg-subtle: #fafafa;
   --ds-color-button-border: #dddde3;
   --ds-color-button-border-hover: #bfc5ce;
-  --ds-color-button-danger-bg: #fe3a3c;
-  --ds-color-button-danger-bg-hover: #e53538;
+  --ds-color-button-danger-bg: #c92a1a;
+  --ds-color-button-danger-bg-hover: #a8210f;
   --ds-color-button-danger-text: #fafafa;
+  --ds-color-button-success-bg: #15803d;
+  --ds-color-button-success-bg-hover: #0f5f2e;
+  --ds-color-button-success-text: #fafafa;
 
   /* Gray Variants */
   --ds-color-gray-main: #fafafa;

@@ -1,7 +1,7 @@
 // Styles
 import "./styles/globals.css";
 import "./styles/tokens.css";
-import "./styles/cores.tokens.css";
+import "./styles/colors.tokens.css";
 import "./styles/text.tokens.css";
 import "./styles/spaces.tokens.css";
 

@@ -1,5 +1,5 @@
 /// <reference types="vite/client" />
-import "../src/styles/cores.tokens.css";
+import "../src/styles/colors.tokens.css";
 import "../src/styles/text.tokens.css";
 import "../src/styles/spaces.tokens.css";
 import "../src/styles/tokens.css";

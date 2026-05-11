@@ -1,82 +1,125 @@
 import { clsx } from "clsx";
-import type { ButtonHTMLAttributes, Ref } from "react";
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 import { forwardRef } from "react";
 
 import { DsLoading } from "../ds-loading";
 import {
-  BUTTON_COLORS,
+  BUTTON_APPEARANCES,
   BUTTON_ROUNDS,
   BUTTON_SIZES,
-  BUTTON_VARIANTS,
-  type ButtonColor,
+  BUTTON_TONES,
+  type ButtonAppearance,
   type ButtonRound,
   type ButtonSize,
-  type ButtonVariant,
+  type ButtonTone,
 } from "./props-and-variants";
 import styles from "./styles.module.css";
 
-export interface DsButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  color?: ButtonColor;
+type CommonButtonProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "children"
+> & {
+  /** Estilo visual do botão (preenchido, contorno, ghost ou link). */
+  appearance?: ButtonAppearance;
+  /** Cor semântica / tom da ação. */
+  tone?: ButtonTone;
+  /** Raio das bordas. */
   round?: ButtonRound;
+  /** Estado de carregamento (desabilita o botão). */
   loading?: boolean;
+  /** Variante visual do indicador de loading. */
   loadingVariant?: "spinner" | "dots";
-  width?: "full" | "auto";
-}
+  /** Ocupa 100% da largura do container. */
+  fullWidth?: boolean;
+  /** Ícone ou elemento antes do texto (decorativo: `aria-hidden`). */
+  leftIcon?: ReactNode;
+  /** Ícone ou elemento depois do texto (decorativo: `aria-hidden`). */
+  rightIcon?: ReactNode;
+};
+
+export type DefaultSizeButtonProps = CommonButtonProps & {
+  size?: Exclude<ButtonSize, "icon">;
+  children: ReactNode;
+};
+
+export type IconOnlyButtonProps = CommonButtonProps & {
+  size: "icon";
+  "aria-label": string;
+  children?: ReactNode;
+};
+
+export type DsButtonProps = DefaultSizeButtonProps | IconOnlyButtonProps;
 
 export const DsButton = forwardRef<HTMLButtonElement, DsButtonProps>(
   (
     {
-      variant = "primary",
+      appearance = "solid",
+      tone = "brand",
       size = "default",
-      color,
       round = "lg",
       loading = false,
       loadingVariant = "spinner",
       disabled,
       children,
-      width,
+      fullWidth,
+      leftIcon,
+      rightIcon,
       className,
       ...props
     },
     ref: Ref<HTMLButtonElement>,
   ) => {
-    const variantClass = styles[BUTTON_VARIANTS[variant]];
+    const appearanceClass = styles[BUTTON_APPEARANCES[appearance]];
+    const toneClass = styles[BUTTON_TONES[tone]];
     const sizeClass = styles[BUTTON_SIZES[size]];
-    const colorClass = color ? styles[BUTTON_COLORS[color]] : undefined;
     const roundClass = styles[BUTTON_ROUNDS[round]];
 
     const isDisabled = disabled ?? loading;
 
+    const body = (
+      <>
+        {leftIcon ? (
+          <span className={styles["icon-slot"]} aria-hidden>
+            {leftIcon}
+          </span>
+        ) : null}
+        {children}
+        {rightIcon ? (
+          <span className={styles["icon-slot"]} aria-hidden>
+            {rightIcon}
+          </span>
+        ) : null}
+      </>
+    );
+
     const content = loading ? (
       <>
-        <span className={styles["loadingContent"]}>{children}</span>
+        <span className={styles["loading-content"]} aria-hidden={loading}>
+          {body}
+        </span>
         <span className={styles["spinner"]}>
           <DsLoading variant={loadingVariant} size="sm" />
         </span>
       </>
     ) : (
-      children
+      body
     );
 
     return (
       <button
         className={clsx(
           styles["base"],
-          variantClass,
+          appearanceClass,
+          toneClass,
           sizeClass,
-          colorClass,
           roundClass,
           loading && styles["loading"],
-          isDisabled && styles["disabled"],
-          width === "full" && styles["fullWidth"],
+          fullWidth && styles["full-width"],
           className,
         )}
         type="button"
         ref={ref}
         disabled={isDisabled}
-        aria-disabled={isDisabled}
         aria-busy={loading ? "true" : undefined}
         {...props}
       >
@@ -87,3 +130,10 @@ export const DsButton = forwardRef<HTMLButtonElement, DsButtonProps>(
 );
 
 DsButton.displayName = "DsButton";
+
+export type {
+  ButtonAppearance,
+  ButtonRound,
+  ButtonSize,
+  ButtonTone,
+} from "./props-and-variants";

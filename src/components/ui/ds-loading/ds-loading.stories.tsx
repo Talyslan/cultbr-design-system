@@ -216,10 +216,15 @@ export const InsideButton: Story = {
         alignItems: "flex-start",
       }}
     >
-      <DsButton variant="primary" loading loadingVariant="spinner">
+      <DsButton loading loadingVariant="spinner">
         Salvar
       </DsButton>
-      <DsButton variant="secondary" loading loadingVariant="dots">
+      <DsButton
+        appearance="solid"
+        tone="neutral"
+        loading
+        loadingVariant="dots"
+      >
         Enviar
       </DsButton>
     </div>

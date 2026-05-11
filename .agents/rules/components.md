@@ -107,6 +107,16 @@ Adicionar dependências SOMENTE quando:
 
 ---
 
+# Ícones
+
+A única biblioteca de ícones permitida é **`@phosphor-icons/react`**.
+
+- Importar sempre nominalmente: `import { PlusIcon } from "@phosphor-icons/react";`.
+- NUNCA usar emojis (`🔍`, `➕`, etc.) em código ou stories.
+- Detalhes completos em `icons.md`.
+
+---
+
 # Documentação (Storybook)
 
 Todos os componentes DEVEM possuir:
