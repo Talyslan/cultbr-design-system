@@ -1,70 +1,89 @@
 import { clsx } from "clsx";
 import type { HTMLAttributes } from "react";
 
-import { DsTypography } from "../ds-typography";
 import {
   LOADING_SIZES,
+  LOADING_TONES,
   LOADING_VARIANTS,
   type LoadingSize,
+  type LoadingTone,
   type LoadingVariant,
 } from "./props-and-variants";
 import styles from "./styles.module.css";
 
-export interface DsLoadingProps extends HTMLAttributes<HTMLSpanElement> {
+export interface DsLoadingProps extends HTMLAttributes<HTMLOutputElement> {
+  /** Estilo visual do indicador de carregamento. */
   variant?: LoadingVariant;
+  /** Tamanho do indicador (afeta spinner e dots). */
   size?: LoadingSize;
+  /** Tom de cor aplicado via `currentColor` ao spinner e aos dots. */
+  tone?: LoadingTone;
+  /**
+   * Texto anunciado por leitores de tela através de `aria-label`.
+   * É sobrescrito quando `aria-label` é passado explicitamente.
+   * @default "Carregando"
+   */
+  label?: string;
 }
 
 export function DsLoading({
   variant = "spinner",
   size = "md",
+  tone = "brand",
+  label = "Carregando",
   className,
+  "aria-label": ariaLabelProp,
   ...props
 }: Readonly<DsLoadingProps>) {
   const variantClass = styles[LOADING_VARIANTS[variant]];
   const sizeClass = styles[LOADING_SIZES[size]];
+  const toneClass = styles[LOADING_TONES[tone]];
+  const ariaLabel = ariaLabelProp ?? label;
 
   if (variant === "dots") {
     return (
-      <span
-        role="status"
+      <output
         aria-live="polite"
-        className={clsx(styles["base"], variantClass, className)}
+        aria-atomic
+        aria-label={ariaLabel}
+        className={clsx(
+          styles["base"],
+          variantClass,
+          sizeClass,
+          toneClass,
+          className,
+        )}
         {...props}
       >
         <span className={styles["dot"]} />
         <span className={styles["dot"]} />
         <span className={styles["dot"]} />
-        <DsTypography
-          as="span"
-          variant="micro"
-          tone="muted"
-          className={styles["srOnly"]}
-        >
-          Carregando...
-        </DsTypography>
-      </span>
+      </output>
     );
   }
 
   return (
-    <span
-      role="status"
+    <output
       aria-live="polite"
-      className={clsx(styles["base"], variantClass, sizeClass, className)}
+      aria-atomic
+      aria-label={ariaLabel}
+      className={clsx(
+        styles["base"],
+        variantClass,
+        sizeClass,
+        toneClass,
+        className,
+      )}
       {...props}
     >
-      <span className={styles["spinnerTrack"]} />
-      <span className={styles["spinnerOrbit"]} />
-      <DsTypography
-        as="span"
-        variant="micro"
-        tone="muted"
-        className={styles["srOnly"]}
-      >
-        Carregando...
-      </DsTypography>
-    </span>
+      <span className={styles["spinner-track"]} />
+      <span className={styles["spinner-orbit"]} />
+    </output>
   );
 }
 
+export type {
+  LoadingSize,
+  LoadingTone,
+  LoadingVariant,
+} from "./props-and-variants";
