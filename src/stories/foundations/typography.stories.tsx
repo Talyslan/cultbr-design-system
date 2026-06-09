@@ -26,7 +26,7 @@ const TypographyGrid = () => {
     >
       <h1>Typography Foundation</h1>
       <p style={{ marginBottom: "40px", color: "#666" }}>
-        Utilizamos a fonte <strong>Rawline</strong> como nossa tipografia
+        Utilizamos a fonte <strong>Poppins</strong> como nossa tipografia
         principal.
       </p>
 

@@ -1,46 +1,19 @@
 /**
- * Rawline Font Face Declarations
- * Font files located in public/fonts/rawline/
+ * Poppins Font Face Declarations
+ * Font files provided by @fontsource/poppins
  */
 
-@font-face {
-  font-family: "Rawline";
-  src: url("/fonts/rawline/rawline-400.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rawline";
-  src: url("/fonts/rawline/rawline-500.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rawline";
-  src: url("/fonts/rawline/rawline-600.woff") format("woff");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Rawline";
-  src: url("/fonts/rawline/rawline-700.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
 
 /**
  * Typography Tokens
  */
 :root {
   /* Font Family */
-  --ds-font-sans: Rawline, ui-sans-serif, system-ui, sans-serif,
+  --ds-font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Font Sizes */
